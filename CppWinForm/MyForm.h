@@ -215,6 +215,7 @@ namespace CppWinForm {
 			this->button6->TabIndex = 8;
 			this->button6->Text = L"9";
 			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// button7
 			// 
@@ -229,6 +230,7 @@ namespace CppWinForm {
 			this->button7->TabIndex = 7;
 			this->button7->Text = L"8";
 			this->button7->UseVisualStyleBackColor = false;
+			this->button7->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// button8
 			// 
@@ -243,6 +245,7 @@ namespace CppWinForm {
 			this->button8->TabIndex = 6;
 			this->button8->Text = L"7";
 			this->button8->UseVisualStyleBackColor = false;
+			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// button9
 			// 
@@ -271,6 +274,7 @@ namespace CppWinForm {
 			this->button10->TabIndex = 12;
 			this->button10->Text = L"6";
 			this->button10->UseVisualStyleBackColor = false;
+			this->button10->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// button11
 			// 
@@ -285,6 +289,7 @@ namespace CppWinForm {
 			this->button11->TabIndex = 11;
 			this->button11->Text = L"5";
 			this->button11->UseVisualStyleBackColor = false;
+			this->button11->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// button12
 			// 
@@ -299,6 +304,7 @@ namespace CppWinForm {
 			this->button12->TabIndex = 10;
 			this->button12->Text = L"4";
 			this->button12->UseVisualStyleBackColor = false;
+			this->button12->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// button13
 			// 
@@ -327,6 +333,7 @@ namespace CppWinForm {
 			this->button14->TabIndex = 16;
 			this->button14->Text = L"3";
 			this->button14->UseVisualStyleBackColor = false;
+			this->button14->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// button16
 			// 
@@ -341,6 +348,7 @@ namespace CppWinForm {
 			this->button16->TabIndex = 14;
 			this->button16->Text = L"1";
 			this->button16->UseVisualStyleBackColor = false;
+			this->button16->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// button15
 			// 
@@ -355,6 +363,7 @@ namespace CppWinForm {
 			this->button15->TabIndex = 15;
 			this->button15->Text = L"2";
 			this->button15->UseVisualStyleBackColor = false;
+			this->button15->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// button17
 			// 
@@ -397,6 +406,7 @@ namespace CppWinForm {
 			this->button20->TabIndex = 18;
 			this->button20->Text = L"0";
 			this->button20->UseVisualStyleBackColor = false;
+			this->button20->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
 			// MyForm
 			// 
@@ -439,5 +449,19 @@ namespace CppWinForm {
 	private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+	private: System::Void button_number_Click(System::Object^ sender, System::EventArgs^ e) {
+		Button^ button = safe_cast<Button^>(sender);
+		if (this->label1->Text == "0")
+		{
+			this->label1->Text = button->Text;
+		}
+		else
+		{
+			this->label1->Text += button->Text;
+		}
+		
+	}
+
+
 	};
 }
