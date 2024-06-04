@@ -39,23 +39,32 @@ namespace CppWinForm {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button_del;
+	private: System::Windows::Forms::Button^ button_umn;
+
+
+
 	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Button^ button8;
-	private: System::Windows::Forms::Button^ button9;
+	private: System::Windows::Forms::Button^ button_minus;
+
 	private: System::Windows::Forms::Button^ button10;
 	private: System::Windows::Forms::Button^ button11;
 	private: System::Windows::Forms::Button^ button12;
-	private: System::Windows::Forms::Button^ button13;
+	private: System::Windows::Forms::Button^ button_plus;
+
 	private: System::Windows::Forms::Button^ button14;
 
 	private: System::Windows::Forms::Button^ button16;
 	private: System::Windows::Forms::Button^ button15;
-	private: System::Windows::Forms::Button^ button17;
+	private: System::Windows::Forms::Button^ button_result;
+
 	private: System::Windows::Forms::Button^ button18;
 	private: System::Windows::Forms::Button^ button20;
+
+	private: int first_num;
+	private: Char user_action;
 	protected:
 
 	protected:
@@ -83,20 +92,20 @@ namespace CppWinForm {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button_del = (gcnew System::Windows::Forms::Button());
+			this->button_umn = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->button9 = (gcnew System::Windows::Forms::Button());
+			this->button_minus = (gcnew System::Windows::Forms::Button());
 			this->button10 = (gcnew System::Windows::Forms::Button());
 			this->button11 = (gcnew System::Windows::Forms::Button());
 			this->button12 = (gcnew System::Windows::Forms::Button());
-			this->button13 = (gcnew System::Windows::Forms::Button());
+			this->button_plus = (gcnew System::Windows::Forms::Button());
 			this->button14 = (gcnew System::Windows::Forms::Button());
 			this->button16 = (gcnew System::Windows::Forms::Button());
 			this->button15 = (gcnew System::Windows::Forms::Button());
-			this->button17 = (gcnew System::Windows::Forms::Button());
+			this->button_result = (gcnew System::Windows::Forms::Button());
 			this->button18 = (gcnew System::Windows::Forms::Button());
 			this->button20 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -174,33 +183,35 @@ namespace CppWinForm {
 			this->button3->Text = L"%";
 			this->button3->UseVisualStyleBackColor = false;
 			// 
-			// button4
+			// button_del
 			// 
-			this->button4->BackColor = System::Drawing::Color::Goldenrod;
-			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_del->BackColor = System::Drawing::Color::Goldenrod;
+			this->button_del->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button_del->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button4->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button4->Location = System::Drawing::Point(274, 88);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(70, 60);
-			this->button4->TabIndex = 5;
-			this->button4->Text = L"/";
-			this->button4->UseVisualStyleBackColor = false;
+			this->button_del->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->button_del->Location = System::Drawing::Point(274, 88);
+			this->button_del->Name = L"button_del";
+			this->button_del->Size = System::Drawing::Size(70, 60);
+			this->button_del->TabIndex = 5;
+			this->button_del->Text = L"/";
+			this->button_del->UseVisualStyleBackColor = false;
+			this->button_del->Click += gcnew System::EventHandler(this, &MyForm::button_del_Click);
 			// 
-			// button5
+			// button_umn
 			// 
-			this->button5->BackColor = System::Drawing::Color::Goldenrod;
-			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_umn->BackColor = System::Drawing::Color::Goldenrod;
+			this->button_umn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button_umn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button5->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button5->Location = System::Drawing::Point(274, 166);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(70, 60);
-			this->button5->TabIndex = 9;
-			this->button5->Text = L"*";
-			this->button5->UseVisualStyleBackColor = false;
+			this->button_umn->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->button_umn->Location = System::Drawing::Point(274, 166);
+			this->button_umn->Name = L"button_umn";
+			this->button_umn->Size = System::Drawing::Size(70, 60);
+			this->button_umn->TabIndex = 9;
+			this->button_umn->Text = L"*";
+			this->button_umn->UseVisualStyleBackColor = false;
+			this->button_umn->Click += gcnew System::EventHandler(this, &MyForm::button_umn_Click);
 			// 
 			// button6
 			// 
@@ -247,19 +258,20 @@ namespace CppWinForm {
 			this->button8->UseVisualStyleBackColor = false;
 			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
-			// button9
+			// button_minus
 			// 
-			this->button9->BackColor = System::Drawing::Color::Goldenrod;
-			this->button9->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->button9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_minus->BackColor = System::Drawing::Color::Goldenrod;
+			this->button_minus->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button_minus->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button9->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button9->Location = System::Drawing::Point(274, 242);
-			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(70, 60);
-			this->button9->TabIndex = 13;
-			this->button9->Text = L"-";
-			this->button9->UseVisualStyleBackColor = false;
+			this->button_minus->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->button_minus->Location = System::Drawing::Point(274, 242);
+			this->button_minus->Name = L"button_minus";
+			this->button_minus->Size = System::Drawing::Size(70, 60);
+			this->button_minus->TabIndex = 13;
+			this->button_minus->Text = L"-";
+			this->button_minus->UseVisualStyleBackColor = false;
+			this->button_minus->Click += gcnew System::EventHandler(this, &MyForm::button_minus_Click);
 			// 
 			// button10
 			// 
@@ -306,19 +318,20 @@ namespace CppWinForm {
 			this->button12->UseVisualStyleBackColor = false;
 			this->button12->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
-			// button13
+			// button_plus
 			// 
-			this->button13->BackColor = System::Drawing::Color::Goldenrod;
-			this->button13->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->button13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_plus->BackColor = System::Drawing::Color::Goldenrod;
+			this->button_plus->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button_plus->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button13->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button13->Location = System::Drawing::Point(274, 318);
-			this->button13->Name = L"button13";
-			this->button13->Size = System::Drawing::Size(70, 60);
-			this->button13->TabIndex = 17;
-			this->button13->Text = L"+";
-			this->button13->UseVisualStyleBackColor = false;
+			this->button_plus->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->button_plus->Location = System::Drawing::Point(274, 318);
+			this->button_plus->Name = L"button_plus";
+			this->button_plus->Size = System::Drawing::Size(70, 60);
+			this->button_plus->TabIndex = 17;
+			this->button_plus->Text = L"+";
+			this->button_plus->UseVisualStyleBackColor = false;
+			this->button_plus->Click += gcnew System::EventHandler(this, &MyForm::button_plus_Click);
 			// 
 			// button14
 			// 
@@ -365,19 +378,20 @@ namespace CppWinForm {
 			this->button15->UseVisualStyleBackColor = false;
 			this->button15->Click += gcnew System::EventHandler(this, &MyForm::button_number_Click);
 			// 
-			// button17
+			// button_result
 			// 
-			this->button17->BackColor = System::Drawing::Color::Goldenrod;
-			this->button17->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->button17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_result->BackColor = System::Drawing::Color::Goldenrod;
+			this->button_result->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button_result->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button17->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button17->Location = System::Drawing::Point(274, 397);
-			this->button17->Name = L"button17";
-			this->button17->Size = System::Drawing::Size(70, 60);
-			this->button17->TabIndex = 21;
-			this->button17->Text = L"=";
-			this->button17->UseVisualStyleBackColor = false;
+			this->button_result->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->button_result->Location = System::Drawing::Point(274, 397);
+			this->button_result->Name = L"button_result";
+			this->button_result->Size = System::Drawing::Size(70, 60);
+			this->button_result->TabIndex = 21;
+			this->button_result->Text = L"=";
+			this->button_result->UseVisualStyleBackColor = false;
+			this->button_result->Click += gcnew System::EventHandler(this, &MyForm::button_result_Click);
 			// 
 			// button18
 			// 
@@ -416,22 +430,22 @@ namespace CppWinForm {
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->ClientSize = System::Drawing::Size(357, 474);
-			this->Controls->Add(this->button17);
+			this->Controls->Add(this->button_result);
 			this->Controls->Add(this->button18);
 			this->Controls->Add(this->button20);
-			this->Controls->Add(this->button13);
+			this->Controls->Add(this->button_plus);
 			this->Controls->Add(this->button14);
 			this->Controls->Add(this->button15);
 			this->Controls->Add(this->button16);
-			this->Controls->Add(this->button9);
+			this->Controls->Add(this->button_minus);
 			this->Controls->Add(this->button10);
 			this->Controls->Add(this->button11);
 			this->Controls->Add(this->button12);
-			this->Controls->Add(this->button5);
+			this->Controls->Add(this->button_umn);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button7);
 			this->Controls->Add(this->button8);
-			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button_del);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -459,9 +473,54 @@ namespace CppWinForm {
 		{
 			this->label1->Text += button->Text;
 		}
-		
 	}
+	
 
 
-	};
+	private: System::Void button_del_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		math_action('/');
+	}
+private: System::Void button_umn_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	math_action('*');
+}
+private: System::Void button_minus_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	math_action('-');
+}
+private: System::Void button_plus_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	math_action('+');
+}
+private: System::Void button_result_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	int second = System::Convert::ToInt32(this->label1->Text);
+	int res = 0;
+	switch (user_action)
+		{
+	case '+': res = second + first_num;
+		break;
+	case '-': res = first_num - second;
+		break;
+	case '/': res = first_num / second;
+		break;
+	case '*': res = first_num * second;
+		break;
+
+		default:
+			return;
+		}
+
+	label1->Text =System::Convert::ToString( res);
+}
+
+		private: System::Void math_action(char action)
+		{
+			this->first_num = System::Convert::ToInt32(this->label1->Text);
+			this->user_action = action;
+			this->label1->Text = "0";
+
+		}
+};
 }
