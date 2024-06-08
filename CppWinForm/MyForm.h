@@ -503,7 +503,14 @@ private: System::Void button_result_Click(System::Object^ sender, System::EventA
 		break;
 	case '-': res = first_num - second;
 		break;
-	case '/': res = first_num / second;
+	case '/':
+		if (second == 0)
+		{
+			MessageBox::Show(this, "Деление на ноль", "ERROR", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		else
+
+		res = first_num / second;
 		break;
 	case '*': res = first_num * second;
 		break;
@@ -512,7 +519,7 @@ private: System::Void button_result_Click(System::Object^ sender, System::EventA
 			return;
 		}
 
-	label1->Text =System::Convert::ToString( res);
+	label1->Text =System::Convert::ToString(res);
 }
 
 		private: System::Void math_action(char action)
