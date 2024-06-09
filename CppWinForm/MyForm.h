@@ -64,7 +64,8 @@ namespace CppWinForm {
 	private: System::Windows::Forms::Button^ button20;
 
 	private: int first_num;
-	private: Char user_action;
+	private: Char user_action=' ';
+	private: bool is_result = false;
 	protected:
 
 	protected:
@@ -465,9 +466,10 @@ namespace CppWinForm {
 	}
 	private: System::Void button_number_Click(System::Object^ sender, System::EventArgs^ e) {
 		Button^ button = safe_cast<Button^>(sender);
-		if (this->label1->Text == "0")
+		if (this->label1->Text == "0" || is_result)
 		{
 			this->label1->Text = button->Text;
+			is_result = false;
 		}
 		else
 		{
@@ -495,6 +497,8 @@ private: System::Void button_plus_Click(System::Object^ sender, System::EventArg
 }
 private: System::Void button_result_Click(System::Object^ sender, System::EventArgs^ e) 
 {
+	if (user_action == ' ') return;
+
 	int second = System::Convert::ToInt32(this->label1->Text);
 	int res = 0;
 	switch (user_action)
@@ -519,6 +523,7 @@ private: System::Void button_result_Click(System::Object^ sender, System::EventA
 			return;
 		}
 
+	is_result = true;
 	label1->Text =System::Convert::ToString(res);
 }
 
@@ -527,6 +532,7 @@ private: System::Void button_result_Click(System::Object^ sender, System::EventA
 			this->first_num = System::Convert::ToInt32(this->label1->Text);
 			this->user_action = action;
 			this->label1->Text = "0";
+			
 
 		}
 };
